@@ -18,7 +18,11 @@ public class Main {
 			int num = Integer.parseInt(br.readLine());
 			LinkedHashSet<Integer> picker = new LinkedHashSet<>();
 			LinkedHashSet<Integer> primeNums = new LinkedHashSet<>();
-			for(int j = 2; j < num; j++) {
+			
+			for(int j = 2; j < num; j++){
+				primeNums.add(j);
+			}
+			for(int j = 2; j * j < num; j++) {
 				primeNums.add(j);
 				for(int k = 2; k * j <= num; k++) {
 					picker.add(j * k);
@@ -30,6 +34,9 @@ public class Main {
 				if(primeNums.contains(num - iter) && iter <= num - iter) {
 					result[0] = iter;
 					result[1] = num - iter;
+				}
+				else if (iter > num - iter) {
+					break;
 				}
 			}
 			bw.write(result[0] + " " + result[1] + "\n");
